@@ -81,11 +81,38 @@ Many restaurants still rely on manual ordering or phone calls, which can cause d
  
 ## 8. Project Timeline 
 **Sprint 1 (Week 3-4):** Basic authentication and user management
+-Set up the user database
+-Create the registration screen with data validation
+-Create the login screen
+-Add the logout feature
+-Configure the session using SharedPreferences to save login status
+-Test the core functionality (Register, Login, Logout)
 **Sprint 2 (Week 5-6):** Core feature 1 and 2
+-Design the splash screen with the app logo
+-Create onboarding screens to demonstrate how to use the app
+-Integrate onboarding with login
+-Test the app's first-time user experience
 **Sprint 3 (Week 7-8):** Core feature 3 and 4
+-Improved login system
+-Enhanced session management to ensure users remember the settings permanently
+-Added a password recovery screen 
+-Comprehensive testing of the login and logout process
 **Sprint 4 (Week 9-10):** Remaining core features
+-Create a menu display with categories
+-Add a shopping cart with the ability to edit quantities
+-Improve the order placement process
+-Create an order history screen
+-Improve the user profile screen
 **Sprint 5 (Week 11-12):** Polish, testing, bug fixes 
+-Improved user interface (UI/UX)
+-Fixed identified bugs
+-Comprehensive testing of all features
+-Improved performance and user experience
 **Sprint 6 (Week 13-14):** Final testing and presentation prep
+-Final testing of the application on different devices
+-Preparing presentation slides
+-Recording a demo video
+-Upload the final version to GitHub along with the documentation
  
 ## 9. Success Criteria 
 The project will be considered successful if:
@@ -97,31 +124,31 @@ The project will be considered successful if:
 - [ ] Security best practices are followed
  
 ## 10. Risks and Mitigation 
-**Risk 1:** [e.g., Team member unavailable]
-**Mitigation:** [e.g., Cross-train all members on all components]
-**Risk 2:** [e.g., Technical complexity too high]
-**Mitigation:** [e.g., Simplify scope, focus on core features]
-**Risk 3:** [e.g., Integration issues] 
-**Mitigation:** [e.g., Early integration testing, clear API contracts]
+**Risk 1:** [ Team member unavailable]
+**Mitigation:** [Distribute tasks in a balanced way and document each step on GitHub and Trello so that any member can continue the work of another]
+**Risk 2:** [ Technical complexity too high]
+**Mitigation:** [Focus first on the core features (MVP such as Login, Menu, Cart) and postpone additional features if time is limited]
+**Risk 3:** [ Integration issues] 
+**Mitigation:** [Use GitHub in an organized way (Branches, Pull Requests, Code Reviews) and perform regular merges to avoid accumulated conflicts]
  
 ## 11. Team Roles and Responsibilities 
-**[Name] - Product Owner:**
+**[khaderAbuShaban1] - Product Owner:**
 - Manages product backlog
 - Defines priorities
 - Accepts completed work
-**[Name] - Scrum Master:**
+**[NedalAbuGhanem] - Scrum Master:**
 - Facilitates Scrum ceremonies
 - Removes blockers
 - Tracks progress
-**[Name] - Lead Developer:**
+**[RaghebAbuShaban] - Lead Developer:**
 - Backend architecture
 - Database design
 - API development
-**[Name] - Frontend Developer:**
+**[MohammedMoqaiad] - Frontend Developer:**
 - UI/UX implementation
 - Frontend integration
 - Responsive design
-[Note: All members contribute to all areas, these are primary focuses]
+[Note: While each member has a primary role, all team members contribute to different areas of the project]
 
 ## 12. Deliverables 
 - Working web application
@@ -134,6 +161,6 @@ The project will be considered successful if:
 **Approved by Team:**
 - Khader abu shaban - 1/21/2026
 - Ragheb abu shaban - 1/21/2026
-- [Name] - [Date]
+- [Mohammed Moqaiad] - 1/21/2026
 - [Name] - [Date]
 **Instructor Approval:** ________________ Date: _______
