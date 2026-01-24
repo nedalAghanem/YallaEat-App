@@ -162,5 +162,6 @@ The project will be considered successful if:
 - Khader abu shaban - 1/21/2026
 - Ragheb abu shaban - 1/21/2026
 - [Mohammed Moqaiad] - 1/21/2026
+- Nedal AbuGhanem - 1/21/2026
 - [Name] - [Date]
 **Instructor Approval:** ________________ Date: _______
