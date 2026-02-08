@@ -151,10 +151,10 @@ The project will be considered successful if:
 [Note: While each member has a primary role, all team members contribute to different areas of the project]
 
 ## 12. Deliverables 
-- Working web application
+- Working Android mobile application (YallaEat)
 - Source code on GitHub
-- Documentation (README, API docs, user guide)
-- Test suite
+- Documentation (README and User Guide)
+- Manual test cases
 - Presentation slides
 - Demo video
 ---
@@ -162,5 +162,6 @@ The project will be considered successful if:
 - Khader abu shaban - 1/21/2026
 - Ragheb abu shaban - 1/21/2026
 - [Mohammed Moqaiad] - 1/21/2026
+- Nedal AbuGhanem - 1/21/2026
 - [Name] - [Date]
 **Instructor Approval:** ________________ Date: _______
