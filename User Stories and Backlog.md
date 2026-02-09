@@ -1,212 +1,92 @@
-1. User Types
-1. Customer (Primary)
-Users who browse restaurants, order food, and track deliveries.
-Main needs: browse meals, place orders, track delivery.
+## User Types
+**1. Customer (Primary User)**
+Customers who use the app to browse the restaurant menu and place orders.
+Main needs:
+View menu and categories
+Add items to cart
+Place orders
+View order history
+Manage profile
+**2. Restaurant Owner (Primary User)**
+Restaurant owners or staff who manage menu items.
+Main needs:
+Manage dishes (add, edit, delete)
+Manage personal profile
 
-2. Restaurant Owner (Primary)
-Users who manage restaurant menus and orders.
-Main needs: manage meals, receive orders, update order status.
-
-3. Administrator (Secondary)
-Users who manage the system and users.
-Main needs: user management, reports, system monitoring.
-
-2. User Stories
-User Story #1 – User Registration
-As a customer
-I want to create an account
-So that I can place food orders
-Priority: Must-Have
-Estimated Points: 5
-
+# Product Backlog: YallaEat
+## Backlog Summary – Total User Stories: 11
+- Must-Have: 6
+- Should-Have: 4
+- Nice-to-Have: 1
+## Must-Have Stories (Priority 1)##
+**Story #1: User Registration [5 points]**
+As a new user, I want to create an account so that I can use the application and place orders.
 Acceptance Criteria:
+Given I am on the registration screen
+When I enter valid username and password
+Then my account should be created successfully and I see a success message
 
-Given I am on the registration page
-When I enter valid information
-Then my account is created successfully
+Given I leave required fields empty
+Then I should see an error message and account should not be created
+**Story #2: User Login [3 points]**
+As a registered user, I want to log in so that I can access my personal data.
+Acceptance Criteria:
+Given I am on the login screen
+When I enter correct username and password
+Then I should be logged in successfully
 
-Given I enter invalid data
-When I submit the form
-Then I see an error message
+Given I enter wrong credentials
+Then I should see an error message
+**Story #3: Browse Menu Categories [3 points]**
+As a customer, I want to browse food categories so that I can find meals easily.
+Acceptance Criteria:
+Given I am on the main menu
+When I select a category
+Then the related dishes are displayed
+**Story #4: View Dish Details [3 points]**
+As a customer, I want to view dish details (name, price, image) so that I can decide what to order.
+Acceptance Criteria:
+Given I select a dish
+Then I should see its name, image, price, and description
+**Story #5: Manage Cart [5 points]**
+As a customer, I want to add items to the cart and adjust quantities so that I can review my order before placing it.
+Acceptance Criteria:
+Given I am viewing a dish
+When I add it to the cart and select quantity
+Then the cart updates with correct item and quantity
 
-User Story #2 – User Login
-As a registered user
-I want to log in
-So that I can access my account
-Priority: Must-Have
-Estimated Points: 3
+Given I open the cart
+Then I can adjust quantities or remove items
+**Story #6: Place Order [3 points]**
+As a customer, I want to place my order so that the restaurant can prepare my food.
+Acceptance Criteria:
+Given I have items in my cart
+When I confirm the order
+Then the order is saved and I receive confirmation
+**Story #7: Owner Menu Management [5 points]**
+As an owner, I want to add, edit, or delete dishes so that the menu stays updated.
+Acceptance Criteria:
+Given I am logged in as owner
+When I add/edit/delete a dish
+Then the menu updates accordingly
+## Should-Have Stories (Priority 2)##
+**Story #8: View Order History [3 points]**
+As a customer, I want to view my previous orders so that I can track my past orders.
+**Story #9: Manage Profile [2 points]**
+As a user, I want to edit my profile or log out so that I can control my account.
+**Story #10: Owner Profile Management [2 points]**
+As an owner, I want to view and edit my profile so that I can manage my account information.
+## Nice-to-Have Stories (Priority 3)##
+**Story #11: Favorite Dishes [2 points]**
+As a customer, I want to mark dishes as favorites so that I can easily reorder them later.
+Acceptance Criteria:
+Given I am viewing a dish
+When I tap the "favorite" button
+Then the dish is added to my favorites list
 
-User Story #3 – Browse Restaurants
-As a customer
-I want to browse available restaurants
-So that I can choose where to order from
-Priority: Must-Have
-Estimated Points: 5
-
-User Story #4 – View Menu
-As a customer
-I want to view restaurant menus
-So that I can select meals
-Priority: Must-Have
-Estimated Points: 5
-
-User Story #5 – Place Order
-As a customer
-I want to place an order
-So that I can receive food delivery
-Priority: Must-Have
-Estimated Points: 8
-
-User Story #6 – Track Order
-As a customer
-I want to track my order status
-So that I know when my food arrives
-Priority: Should-Have
-Estimated Points: 5
-
-User Story #7 – Manage Menu
-As a restaurant owner
-I want to manage my menu
-So that customers see updated meals
-Priority: Must-Have
-Estimated Points: 8
-
-User Story #8 – View Orders
-As a restaurant owner
-I want to view incoming orders
-So that I can prepare them
-Priority: Must-Have
-Estimated Points: 8
-
-User Story #9 – Reports
-As an administrator
-I want to view system reports
-So that I can analyze performance
-Priority: Nice-to-Have
-Estimated Points: 8
-
-User Story #10 – Cart Management
-As a customer
-I want to add meals to a cart and edit quantities
-So that I can review my order before checkout
-Priority: Must-Have
-Estimated Points: 8
-
-User Story #11 – Order History
-As a customer
-I want to view my past orders
-So that I can reorder easily
-Priority: Should-Have
-Estimated Points: 5
-
-User Story #12 – User Profile
-As a customer
-I want to edit my personal information
-So that I can keep my account updated
-Priority: Must-Have
-Estimated Points: 5
-
-User Story #13 – Session Management
-As a customer
-I want to stay logged in between sessions
-So that I don’t have to log in every time
-Priority: Must-Have
-Estimated Points: 3
-
-User Story #14 – Notifications
-As a customer
-I want to receive notifications when my order status changes
-So that I stay informed
-Priority: Nice-to-Have
-Estimated Points: 5
-
-User Story #15 – Password Reset
-As a customer
-I want to reset my password
-So that I can recover my account
-Priority: Must-Have
-Estimated Points: 5
-
-User Story #16 – Restaurant Availability
-As a restaurant owner
-I want to set opening and closing hours
-So that customers know when I’m available
-Priority: Should-Have
-Estimated Points: 4
-
-User Story #17 – Admin User Management
-As an administrator
-I want to manage user accounts
-So that I can ensure system integrity
-Priority: Must-Have
-Estimated Points: 8
-
-User Story #18 – Ratings & Reviews
-As a customer
-I want to rate restaurants and meals
-So that I can share my experience
-Priority: Nice-to-Have
-Estimated Points: 5
-
-3. Product Backlog
-Backlog Summary
-Total User Stories: 18
-
-Must-Have: 8
-
-Should-Have: 6
-
-Nice-to-Have: 4
-
-Must-Have (Priority 1)
-Story #1 – User Registration (5)
-
-Story #2 – User Login (3)
-
-Story #3 – Browse Restaurants (5)
-
-Story #4 – View Menu (5)
-
-Story #5 – Place Order (8)
-
-Story #7 – Manage Menu (8)
-
-Story #12 – User Profile (5)
-
-Story #15 – Password Reset (5)
-
-Story #17 – Admin User Management (8)
-
-Should-Have (Priority 2)
-Story #6 – Track Order (5)
-
-Story #8 – View Orders (8)
-
-Story #11 – Order History (5)
-
-Story #13 – Session Management (3)
-
-Story #16 – Restaurant Availability (4)
-
-Nice-to-Have (Priority 3)
-Story #9 – Reports (8)
-
-Story #14 – Notifications (5)
-
-Story #18 – Ratings & Reviews (5)
-
-4. Definition of Done
-All acceptance criteria met
-
-Code reviewed
-
-Tests passing
-
-Product Owner approval
-
-Icebox (Future Considerations)
-Online payment integration
-
-Advanced analytics dashboard
-
-AI-based meal recommendations
+Given I view my favorites
+Then I should see all dishes I marked as favorite
+## Icebox (Future Considerations)##
+- Push notifications for order status
+- In-app payment system
+- Dish ratings & reviews
