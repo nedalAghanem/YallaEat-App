@@ -19,10 +19,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.nextgen.yallaeatapplication.R;
 import com.nextgen.yallaeatapplication.activities.CustomerMainActivity;
+import com.nextgen.yallaeatapplication.activities.OwnerMainActivity;
 import com.nextgen.yallaeatapplication.data.model.User;
 import com.nextgen.yallaeatapplication.data.viewModel.AppViewModel;
-import com.nextgen.yallaeatapplication.fragments.LoginFragment;
-import com.nextgen.yallaeatapplication.fragments.OwnerMainActivity;
 
 public class RegisterFragment extends Fragment {
 
