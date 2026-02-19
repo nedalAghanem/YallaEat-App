@@ -294,3 +294,223 @@ Sprint 2 is successful if:
 - Home screen functional
 - No major bugs
 - Code uploaded to GitHub
+
+- 
+
+- # Sprint 3 Plan – YallaEat
+
+## Sprint Information
+- **Sprint Number:** 3
+- **Duration:** 2 Weeks
+- **Start Date:** 24-Feb-2026
+- **End Date:** 8-Mar-2026
+- **Team Capacity:** ~20 hours (Target 14–18 Story Points)
+
+---
+
+## :dart: Sprint Goal
+Users can browse menu items by category, add items to cart, place orders, view past orders, manage their profile, and Admin (Owner) can manage dishes.
+
+---
+
+## Selected User Stories
+
+---
+
+### Story #1: Menu Categories & Items
+- **Points:** 4
+- **Assigned to:** Khader Abu Shaban
+- **Priority:** Must-Have
+
+**Description:**
+As a user, I want to browse dishes by category so that I can easily select what I want to order.
+
+**Tasks:**
+- Create Dish entity (id, name, price, category, image)
+- Insert sample dishes into database
+- Implement RecyclerView and Adapter
+- Filter dishes by category (Starters, Main Course, Desserts, Drinks)
+
+**Acceptance Criteria:**
+- Dishes displayed using RecyclerView
+- Items categorized correctly
+- No crashes while scrolling
+
+---
+
+### Story #2: Add to Cart
+- **Points:** 3
+- **Assigned to:** Ragheb Abu Shaban
+- **Priority:** Must-Have
+
+**Description:**
+As a user, I want to add dishes to my cart with selected quantity so that I can control my order.
+
+**Tasks:**
+- Create Cart entity (id, dishId, quantity, userId)
+- Create Cart DAO
+- Show AlertDialog to select quantity
+- Save selected item to Room database
+
+**Acceptance Criteria:**
+- Quantity dialog appears when adding item
+- Selected item saved correctly
+- Confirmation message displayed
+- No duplicate insertion errors
+
+---
+
+### Story #3: Cart Screen
+- **Points:** 3
+- **Assigned to:** Ragheb Abu Shaban
+- **Priority:** Must-Have
+
+**Description:**
+As a user, I want to view my cart items before placing an order.
+
+**Tasks:**
+- Display cart items using RecyclerView
+- Calculate total price dynamically
+- Add remove item option
+
+**Acceptance Criteria:**
+- All cart items displayed
+- Total price calculated correctly
+- User can remove items
+- Cart updates instantly
+
+---
+
+### Story #4: Place Order
+- **Points:** 3
+- **Assigned to:** Nedal Abu Ghanem
+- **Priority:** Must-Have
+
+**Description:**
+As a user, I want to place my order and save it in the database.
+
+**Tasks:**
+- Create Order entity (id, userId, totalPrice, date, status)
+- Save cart items as an order
+- Clear cart after successful order
+- Show confirmation AlertDialog
+
+**Acceptance Criteria:**
+- Order saved in database
+- Cart cleared after placing order
+- Success message displayed
+- Order contains correct total price and date
+
+---
+
+### Story #5: View Past Orders
+- **Points:** 2
+- **Assigned to:** Nedal Abu Ghanem
+- **Priority:** Must-Have
+
+**Description:**
+As a user, I want to see my previous orders with details.
+
+**Tasks:**
+- Create Orders Fragment
+- Retrieve orders by logged-in user
+- Display order date, total price, and status
+
+**Acceptance Criteria:**
+- Orders displayed correctly
+- Data matches database
+- RecyclerView works smoothly
+
+---
+
+### Story #6: Profile Screen (Edit + Logout)
+- **Points:** 2
+- **Assigned to:** Khader Abu Shaban
+- **Priority:** Must-Have
+
+**Description:**
+As a user, I want to edit my profile and logout from the app.
+
+**Tasks:**
+- Create Profile Fragment
+- Allow editing username
+- Implement Logout using SharedPreferences
+- Redirect to Login screen after logout
+
+**Acceptance Criteria:**
+- Profile information editable
+- Logout clears session
+- User redirected correctly
+
+---
+
+### Story #7: Admin Profile Screen & Dish Management
+- **Points:** 3
+- **Assigned to:** Mohammed Al Moqaiad
+- **Priority:** Should-Have
+
+**Description:**
+As an admin (owner), I want to manage dishes and view profile.
+
+**Tasks:**
+
+**Dish Management:**
+- Create Add Dish screen with AlertDialog
+- Create Edit Dish screen with AlertDialog
+- Add Delete option with AlertDialog confirmation
+
+**Acceptance Criteria:**
+- Admin can login successfully
+- Admin can add, edit, delete dishes
+- Normal users cannot access admin features
+
+---
+
+## Definition of Done
+A story is considered done when:
+- All tasks completed
+- Acceptance criteria satisfied
+- Code reviewed by at least one teammate
+- App runs without crashes
+- Manually tested
+- Changes pushed to GitHub
+
+---
+
+## Sprint Schedule
+
+### Week 1
+- Implement Dish entity and menu display
+- Setup RecyclerView and categories
+- Add to Cart functionality
+- Build Cart screen
+
+### Week 2
+- Implement Place Order logic
+- Build Orders screen
+- Create Profile screen
+- Implement Admin panel
+- Testing & bug fixing
+- Sprint Review & Retrospective
+
+---
+
+## Communication Plan
+- Daily updates
+- Update Trello board regularly
+- Standup: Monday / Wednesday / Friday (15 minutes)
+- Code review before merging pull requests
+
+---
+
+## Success Metrics
+Sprint 3 is successful if:
+- Users can browse menu by category
+- Add items to cart
+- Place orders successfully
+- View previous orders
+- Edit profile and logout
+- Admin can manage dishes
+- App runs without major bugs
+- Code uploaded to GitHub
+
