@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.data.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +17,8 @@ import com.nextgen.yallaeatapplication.R;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
+    public static User currentUser;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

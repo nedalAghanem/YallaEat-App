@@ -1,66 +1,86 @@
 package com.nextgen.yallaeatapplication.fragments;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.activities.CustomerMainActivity;
+import com.nextgen.yallaeatapplication.data.model.User;
+import com.nextgen.yallaeatapplication.data.viewModel.AppViewModel;
+import com.nextgen.yallaeatapplication.fragments.LoginFragment;
+import com.nextgen.yallaeatapplication.fragments.OwnerMainActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RegisterFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class RegisterFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private EditText edtUsername, edtPassword;
+    private Button btnRegister;
+    private RadioGroup rgUserType;
+    private AppViewModel viewModel;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public RegisterFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment RegisterFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static RegisterFragment newInstance(String param1, String param2) {
-        RegisterFragment fragment = new RegisterFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false);
+        View view = inflater.inflate(R.layout.fragment_register, container, false);
+
+        edtUsername = view.findViewById(R.id.edtRegUsername);
+        edtPassword = view.findViewById(R.id.edtRegPassword);
+        rgUserType = view.findViewById(R.id.rgUserType);
+        btnRegister = view.findViewById(R.id.btnRegister);
+
+        viewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username = edtUsername.getText().toString().trim();
+                String password = edtPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(getContext(), "Please enter username and password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                String type = rgUserType.getCheckedRadioButtonId() == R.id.rbOwner ? "owner" : "customer";
+
+                User newUser = new User(username, password, type);
+                viewModel.registerUser(newUser);
+
+                LoginFragment.currentUser = newUser;
+
+                SharedPreferences prefs = requireContext().getSharedPreferences("app_prefs", getContext().MODE_PRIVATE);
+                prefs.edit()
+                        .putBoolean("logged_in", true)
+                        .putString("username", newUser.getUsername())
+                        .putString("role", newUser.getType())
+                        .apply();
+
+                Toast.makeText(getContext(), "Registration successful", Toast.LENGTH_SHORT).show();
+
+                if (type.equals("owner")) {
+                    startActivity(new Intent(requireActivity(), OwnerMainActivity.class));
+                } else {
+                    startActivity(new Intent(requireActivity(), CustomerMainActivity.class));
+                }
+                requireActivity().finish();
+            }
+        });
+
+        return view;
     }
 }
