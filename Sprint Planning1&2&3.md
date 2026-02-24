@@ -349,7 +349,7 @@ As a user, I want to add dishes to my cart with selected quantity so that I can 
 **Tasks:**
 - Create Cart entity (id, dishId, quantity, userId)
 - Create Cart DAO
-- Show AlertDialog to select quantity
+- select quantity
 - Save selected item to Room database
 
 **Acceptance Criteria:**
@@ -391,9 +391,10 @@ As a user, I want to place my order and save it in the database.
 
 **Tasks:**
 - Create Order entity (id, userId, totalPrice, date, status)
+- Create Order DAO
 - Save cart items as an order
 - Clear cart after successful order
-- Show confirmation AlertDialog
+- Show confirmation message
 
 **Acceptance Criteria:**
 - Order saved in database
@@ -444,13 +445,13 @@ As a user, I want to edit my profile and logout from the app.
 
 ---
 
-### Story #7: Admin Profile Screen & Dish Management
+### Story #7: Owner Profile Screen & Dish Management
 - **Points:** 3
 - **Assigned to:** Mohammed Al Moqaiad
 - **Priority:** Should-Have
 
 **Description:**
-As an admin (owner), I want to manage dishes and view profile.
+As an Owner, I want to manage dishes and view profile.
 
 **Tasks:**
 
@@ -459,10 +460,14 @@ As an admin (owner), I want to manage dishes and view profile.
 - Create Edit Dish screen with AlertDialog
 - Add Delete option with AlertDialog confirmation
 
+**Profile Management:** 
+- Display Owner username
+- Redirect to Login screen after logout
+
 **Acceptance Criteria:**
-- Admin can login successfully
-- Admin can add, edit, delete dishes
-- Normal users cannot access admin features
+- Owner can login successfully
+- Owner can add, edit, delete dishes
+- Normal users cannot access Owner features
 
 ---
 
@@ -513,4 +518,5 @@ Sprint 3 is successful if:
 - Admin can manage dishes
 - App runs without major bugs
 - Code uploaded to GitHub
+
 
