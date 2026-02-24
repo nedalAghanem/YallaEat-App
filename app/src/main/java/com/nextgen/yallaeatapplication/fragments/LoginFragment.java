@@ -51,6 +51,28 @@ public class LoginFragment extends Fragment {
                     return;
                 }
 
+                if (username.length() < 3) {
+                    Toast.makeText(getContext(), "Username must be at least 3 characters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (password.length() < 8) {
+                    Toast.makeText(getContext(), "Password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!password.matches(".*[A-Z].*")) {
+                    Toast.makeText(getContext(), "Password must contain at least one uppercase letter", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!password.matches(".*[0-9].*")) {
+                    Toast.makeText(getContext(), "Password must contain at least one number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!password.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+                    Toast.makeText(getContext(), "Password must contain at least one special character", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 viewModel.loginUser(username, password).observe(getViewLifecycleOwner(), user -> {
                     if (user == null) {
                         Toast.makeText(getContext(), "User not found", Toast.LENGTH_SHORT).show();
