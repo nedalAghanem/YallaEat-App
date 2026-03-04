@@ -36,3 +36,12 @@ public class AppRepository {
         return userDao.getUserByUsername(username);
     }
 }
+
+// ----------------- ORDERS -----------------
+public void placeOrder(Order order){
+    AppDatabase.databaseWriteExecutor.execute(() -> orderDao.insert(order));
+}
+public LiveData<List<Order>> getOrdersForUser(String username){
+    return orderDao.getOrdersForUser(username);
+}
+}
