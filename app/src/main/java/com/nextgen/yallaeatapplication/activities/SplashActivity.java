@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.nextgen.yallaeatapplication.activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
