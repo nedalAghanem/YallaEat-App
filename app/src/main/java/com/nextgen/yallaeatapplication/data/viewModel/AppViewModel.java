@@ -52,4 +52,19 @@ public class AppViewModel extends AndroidViewModel {
         });
         return userLiveData;
     }
+    // ----------------- ORDERS -----------------
+    public void placeOrder(Order order){
+        repository.placeOrder(order);
+    }
+
+    public LiveData<List<Order>> getOrdersForUser(String username){
+        return repository.getOrdersForUser(username);
+    }
+
+    public void loadOrdersForCurrentUser(LifecycleOwner owner, Observer<List<Order>> observer) {
+        if (currentUser.getValue() != null) {
+            getOrdersForUser(currentUser.getValue().getUsername())
+                    .observe(owner, observer);
+        }
+    }
 }
