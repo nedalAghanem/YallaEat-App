@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F2F2F2"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Hi, You"
+            android:textColor="#222222"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_shape"
+            android:clipToOutline="true"
+            android:padding="10dp"
+            android:src="@drawable/star_24dp_1f1f1f_fill0_wght400_grad0_opsz24"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@drawable/bb"
+        android:clipToOutline="true"
+        android:background="@drawable/rounded_shape"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="20dp"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textColor="#222222"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"/>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:id="@+id/categoryContainer"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnAll"
+                android:text="All"
+                android:background="@drawable/rounded_button_orange"
+                app:backgroundTint="@null"
+                android:textColor="#FFFFFF"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnStarters"
+                android:text="Starters"
+                android:background="@drawable/rounded_button_orange"
+                app:backgroundTint="@null"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnMainCourse"
+                android:background="@drawable/rounded_button_orange"
+                app:backgroundTint="@null"
+                android:text="Main Course"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnDesserts"
+                android:background="@drawable/rounded_button_orange"
+                app:backgroundTint="@null"
+                android:text="Desserts"
+                android:layout_marginEnd="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btnDrinks"
+                android:background="@drawable/rounded_button_orange"
+                app:backgroundTint="@null"
+                android:text="Drinks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recommended"
+        android:textSize="20sp"
+        android:textColor="#222222"
+        android:layout_marginTop="20dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDishes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:listitem="@layout/item_dish_actions"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

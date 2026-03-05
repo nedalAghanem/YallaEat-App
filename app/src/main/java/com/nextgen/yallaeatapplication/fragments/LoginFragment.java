@@ -1,0 +1,109 @@
+package com.nextgen.yallaeatapplication.fragments;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.activities.CustomerMainActivity;
+import com.nextgen.yallaeatapplication.activities.OwnerMainActivity;
+import com.nextgen.yallaeatapplication.data.model.User;
+import com.nextgen.yallaeatapplication.data.viewModel.AppViewModel;
+
+public class LoginFragment extends Fragment {
+
+    private EditText edtUsername, edtPassword;
+    private Button btnLogin;
+    public AppViewModel viewModel;
+    public static User currentUser;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        edtUsername = view.findViewById(R.id.edtLoginUsername);
+        edtPassword = view.findViewById(R.id.edtLoginPassword);
+        btnLogin = view.findViewById(R.id.btnLogin);
+        viewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String username = edtUsername.getText().toString().trim();
+                String password = edtPassword.getText().toString().trim();
+
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(getContext(), "Please enter username and password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (username.length() < 3) {
+                    Toast.makeText(getContext(), "Username must be at least 3 characters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (password.length() < 8) {
+                    Toast.makeText(getContext(), "Password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!password.matches(".*[A-Z].*")) {
+                    Toast.makeText(getContext(), "Password must contain at least one uppercase letter", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!password.matches(".*[0-9].*")) {
+                    Toast.makeText(getContext(), "Password must contain at least one number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (!password.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+                    Toast.makeText(getContext(), "Password must contain at least one special character", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                viewModel.loginUser(username, password).observe(getViewLifecycleOwner(), user -> {
+                    if (user == null) {
+                        Toast.makeText(getContext(), "User not found", Toast.LENGTH_SHORT).show();
+                    } else if (!user.getPassword().equals(password)) {
+                        Toast.makeText(getContext(), "Incorrect password", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Context context = requireContext();
+                        context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE)
+                                .edit()
+                                .putBoolean("logged_in", true)
+                                .putString("username", user.getUsername())
+                                .putString("role", user.getType())
+                                .apply();
+
+                        viewModel.setCurrentUser(user);
+
+                        Toast.makeText(getContext(), "Login successful as " + user.getType(), Toast.LENGTH_SHORT).show();
+
+                        if (user.getType().equals("owner")) {
+                            startActivity(new Intent(requireActivity(), OwnerMainActivity.class));
+                        } else {
+                            startActivity(new Intent(requireActivity(), CustomerMainActivity.class));
+                        }
+                        requireActivity().finish();
+                    }
+                });
+            }
+        });
+
+        return view;
+    }
+
+
+}

@@ -1,0 +1,61 @@
+package com.nextgen.yallaeatapplication.activities;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
+import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.adapter.OnboardingAdapter;
+import com.nextgen.yallaeatapplication.items.OnboardingItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class OnboardingActivity extends AppCompatActivity {
+
+    private ViewPager2 viewPager;
+    private TabLayout tabLayout;
+    private Button btnNext;
+    private OnboardingAdapter adapter;
+    private List<OnboardingItem> items;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_onboarding);
+
+        viewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout);
+        btnNext = findViewById(R.id.btnNext);
+
+        items = new ArrayList<>();
+        items.add(new OnboardingItem(R.drawable.welcome, "Welcome", "Enjoy a smooth and easy experience designed just for you."));
+        items.add(new OnboardingItem(R.drawable.explore, "Explore", "Discover top dishes, doctors, or services in just a few taps."));
+        items.add(new OnboardingItem(R.drawable.orders, "Quick Orders", "Choose, order, and relax – it’s that simple!"));
+
+        adapter = new OnboardingAdapter(items);
+        viewPager.setAdapter(adapter);
+
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {}).attach();
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (viewPager.getCurrentItem() < items.size() - 1) {
+                    viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+                } else {
+                    startActivity(new Intent(OnboardingActivity.this, AuthActivity.class));
+                    finish();
+                }
+            }
+        });
+    }
+}
