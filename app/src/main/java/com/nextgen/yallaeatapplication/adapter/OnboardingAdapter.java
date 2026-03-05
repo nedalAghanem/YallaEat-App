@@ -1,4 +1,5 @@
-package com.example.myapplication;
+package com.nextgen.yallaeatapplication.adapter;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.items.OnboardingItem;
+
 import java.util.List;
+
+
 
 public class OnboardingAdapter extends RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder> {
 

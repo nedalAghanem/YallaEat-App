@@ -5,16 +5,21 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
+import com.nextgen.yallaeatapplication.data.model.Dish;
+import com.nextgen.yallaeatapplication.data.model.Order;
 import com.nextgen.yallaeatapplication.data.model.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {User.class,}, version = 5, exportSchema = false)
+@Database(entities = {Dish.class, User.class, Order.class}, version = 6, exportSchema = false)
+@TypeConverters({BitmapConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();
+    public abstract DishDao dishDao();
     public abstract OrderDao orderDao();
 
     private static volatile AppDatabase INSTANCE;

@@ -5,6 +5,8 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.nextgen.yallaeatapplication.data.model.Order;
+
 import java.util.List;
 
 @Dao
