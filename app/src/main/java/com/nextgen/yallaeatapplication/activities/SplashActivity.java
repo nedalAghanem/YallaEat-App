@@ -8,6 +8,8 @@ import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.nextgen.yallaeatapplication.R;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.nextgen.yallaeatapplication.items;
 
 public class OnboardingItem {
     private int image;
