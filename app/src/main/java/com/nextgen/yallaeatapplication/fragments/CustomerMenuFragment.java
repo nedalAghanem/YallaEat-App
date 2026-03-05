@@ -1,66 +1,101 @@
 package com.nextgen.yallaeatapplication.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.adapter.DishAdapter;
+import com.nextgen.yallaeatapplication.data.model.Dish;
+import com.nextgen.yallaeatapplication.data.viewModel.AppViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CustomerMenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
 public class CustomerMenuFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private RecyclerView rvDishes;
+    private DishAdapter adapter;
+    private AppViewModel viewModel;
+    private List<Dish> allDishes;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public CustomerMenuFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CustomerMenuFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CustomerMenuFragment newInstance(String param1, String param2) {
-        CustomerMenuFragment fragment = new CustomerMenuFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    private Button btnAll, btnStarters,btnMainCourse,btnDesserts,btnDrinks;
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_customer_menu, container, false);
+
+        rvDishes = view.findViewById(R.id.rvDishes);
+        viewModel = new ViewModelProvider(requireActivity()).get(AppViewModel.class);
+        btnAll = view.findViewById(R.id.btnAll);
+        btnStarters = view.findViewById(R.id.btnStarters);
+        btnMainCourse = view.findViewById(R.id.btnMainCourse);
+        btnDesserts = view.findViewById(R.id.btnDesserts);
+        btnDrinks = view.findViewById(R.id.btnDrinks);
+
+
+        adapter = new DishAdapter(getContext(), false, new DishAdapter.OnDishActionListener() {
+            @Override
+            public void onAddToCart(Dish dish) {
+                DishDetailsFragment fragment = DishDetailsFragment.newInstance(dish);
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+
+            @Override
+            public void onEdit(Dish dish) {}
+
+            @Override
+            public void onDelete(Dish dish) {}
+        });
+
+        rvDishes.setAdapter(adapter);
+        rvDishes.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        viewModel.getAllDishesLive().observe(getViewLifecycleOwner(), dishes -> {
+            allDishes = dishes;
+            adapter.setDishes(allDishes);
+        });
+
+        View.OnClickListener filterListener = v -> {
+            String category = ((Button)v).getText().toString();
+            filterDishes(category);
+        };
+
+        btnAll.setOnClickListener(filterListener);
+        btnStarters.setOnClickListener(filterListener);
+        btnMainCourse.setOnClickListener(filterListener);
+        btnDesserts.setOnClickListener(filterListener);
+        btnDrinks.setOnClickListener(filterListener);
+
+
+        return view;
+    }
+    private void filterDishes(String category) {
+        if (category.equals("All")) {
+            adapter.setDishes(allDishes);
+            return;
         }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer_menu, container, false);
+        List<Dish> filtered = new ArrayList<>();
+        for (Dish dish : allDishes) {
+            if (dish.getCategory() != null && dish.getCategory().equalsIgnoreCase(category)) {
+                filtered.add(dish);
+            }
+        }
+        adapter.setDishes(filtered);
     }
 }
