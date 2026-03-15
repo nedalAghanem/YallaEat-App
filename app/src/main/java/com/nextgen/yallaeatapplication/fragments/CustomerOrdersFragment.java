@@ -14,6 +14,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.adapter.OrderAdapter;
+import com.nextgen.yallaeatapplication.data.model.User;
+import com.nextgen.yallaeatapplication.data.viewModel.AppViewModel;
+
 public class CustomerOrdersFragment extends Fragment {
 
     private RecyclerView rvOrders;
