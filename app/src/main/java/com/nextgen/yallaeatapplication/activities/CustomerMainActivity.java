@@ -2,12 +2,20 @@ package com.nextgen.yallaeatapplication.activities;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.fragments.CustomerCartFragment;
 import com.nextgen.yallaeatapplication.fragments.CustomerMenuFragment;
+import com.nextgen.yallaeatapplication.fragments.CustomerOrdersFragment;
+import com.nextgen.yallaeatapplication.fragments.CustomerProfileFragment;
 
 public class CustomerMainActivity extends AppCompatActivity {
+
+    private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

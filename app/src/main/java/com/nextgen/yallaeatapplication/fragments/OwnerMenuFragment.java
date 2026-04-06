@@ -1,22 +1,35 @@
 package com.nextgen.yallaeatapplication.fragments;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 
 import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.adapter.DishAdapter;
+import com.nextgen.yallaeatapplication.data.model.Dish;
+import com.nextgen.yallaeatapplication.data.viewModel.AppViewModel;
 
 import java.io.IOException;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OwnerMenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class OwnerMenuFragment extends Fragment {
 
     private static final int PICK_IMAGE_ADD = 100;

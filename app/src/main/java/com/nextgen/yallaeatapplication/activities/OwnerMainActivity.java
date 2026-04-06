@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.fragments.OwnerMenuFragment;
+import com.nextgen.yallaeatapplication.fragments.OwnerProfileFragment;
 
 public class OwnerMainActivity extends AppCompatActivity {
 
+    private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

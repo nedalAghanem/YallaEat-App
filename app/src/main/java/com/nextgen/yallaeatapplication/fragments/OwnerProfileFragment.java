@@ -1,5 +1,7 @@
 package com.nextgen.yallaeatapplication.fragments;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,14 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.nextgen.yallaeatapplication.R;
+import com.nextgen.yallaeatapplication.activities.AuthActivity;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link OwnerProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class OwnerProfileFragment extends Fragment {
 
     @Override
